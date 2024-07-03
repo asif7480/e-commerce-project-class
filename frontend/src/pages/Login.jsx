@@ -17,10 +17,16 @@ const Login = () => {
       .then( (response) => {
         // console.log(response.data);
         localStorage.setItem("email", response.data.email)
+        localStorage.setItem("role", response.data.role)
         localStorage.setItem("token", response.data.token)
         alert("login successfully")
         setUser({ email, orders: [] })
-        navigate("/dashboard")
+        // navigate(`/dashboard/${user.role === "user" ? "user" : "admin"}`)
+        if(localStorage.getItem("role") === "admin"){
+          navigate(`/dashboard/admin`)
+        }else{
+          navigate(`/dashboard/user`)
+        }
       })
       .catch( (err) => {
         console.log(err);

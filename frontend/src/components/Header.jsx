@@ -3,6 +3,7 @@ import { useAuth } from "../context/AuthContext";
 
 const Header = () => {
   const { user, setUser } = useAuth()
+  const role = localStorage.getItem("role")
   const handleLogout = () => {
     setUser({ email: "", orders: []})
     localStorage.removeItem("email")
@@ -47,7 +48,7 @@ const Header = () => {
                 user.email ? (
                   <>
                       <li className="nav-item">
-                        <NavLink to="/dashboard" className="nav-link">
+                        <NavLink to={`/dashboard/${role === "user" ? "user" : "admin"}`} className="nav-link">
                           Dashboard
                         </NavLink>
                       </li>

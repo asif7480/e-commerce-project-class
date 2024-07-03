@@ -2,13 +2,13 @@ import { Navigate, Outlet } from "react-router-dom"
 import { useAuth } from "../context/AuthContext"
 
 
-const UserRoutes = () => {
+const AdminRoutes = () => {
   const {user} = useAuth()
   return (
     <>
-        { (user.email && localStorage.getItem("role") === "user") ? <Outlet /> : <Navigate to="/login"/>}
+        { (user.email && localStorage.getItem("role") === "admin") ? <Outlet /> : <Navigate to="/login"/>}
     </>
   )
 }
 
-export default UserRoutes
+export default AdminRoutes
