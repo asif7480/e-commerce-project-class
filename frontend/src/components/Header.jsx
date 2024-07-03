@@ -47,11 +47,18 @@ const Header = () => {
               {
                 user.email ? (
                   <>
-                      <li className="nav-item">
-                        <NavLink to={`/dashboard/${role === "user" ? "user" : "admin"}`} className="nav-link">
-                          Dashboard
-                        </NavLink>
-                      </li>
+                    <li className="nav-item">
+                      <NavLink to={`/dashboard/${role === "user" ? "user" : "admin"}`} className="nav-link">
+                        Dashboard
+                      </NavLink>
+                    </li>
+
+                    <li className="nav-item">
+                      <NavLink to={`/dashboard/${role === "user" ? "user" : "admin"}/profile`} className="nav-link">
+                        Profile
+                      </NavLink>
+                    </li>
+
                     <li className="nav-item">
                       <NavLink to="/login" onClick={handleLogout} className="nav-link">
                         Logout

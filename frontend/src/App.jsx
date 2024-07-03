@@ -7,6 +7,8 @@ import GuestRoutes from "./Routes/GuestRoutes"
 import AdminRoutes from "./Routes/AdminRoutes"
 import AdminDashboard from "./pages/admin/AdminDashboard"
 import UserDashboard from "./pages/user/UserDashboard"
+import UserProfile from "./pages/user/UserProfile"
+import AdminProfile from "./pages/admin/AdminProfile"
 function App() {
 
   return (
@@ -22,10 +24,14 @@ function App() {
 
           <Route element={<AdminRoutes />}>
             <Route path="/dashboard/admin" element={<AdminDashboard />} />
+            <Route path="/dashboard/admin/profile" element={<AdminProfile />} />
+
           </Route>
 
           <Route element={<UserRoutes />}>
             <Route path="/dashboard/user" element={<UserDashboard />} />
+            <Route path="/dashboard/user/profile" element={<UserProfile />} />
+
           </Route>
 
 
