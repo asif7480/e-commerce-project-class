@@ -3,7 +3,8 @@ const router = express.Router()
 const {
     register,
     login,
-    currentUser
+    userProfile,
+    adminProfile
 } = require("../controllers/authController")
 const { requireSignIn, isAdmin } = require("../middlewares/authMiddleware")
 
@@ -14,7 +15,7 @@ router.post("/register", register)
 router.post("/login", login)
 
 // currentUser || METHOD GET
-router.get("/currentUser", requireSignIn, currentUser)
-router.get("/currentAdmin", requireSignIn, isAdmin ,currentUser)
+router.get("/userProfile", requireSignIn, userProfile)
+router.get("/adminProfile", requireSignIn, isAdmin ,adminProfile)
 
 module.exports = router

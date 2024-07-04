@@ -60,7 +60,7 @@ const login = asyncHandler(async (request, response) => {
   // create a jwt token
 
   const token = await JWT.sign({ id: user._id }, process.env.SECRET_KEY, {
-    expiresIn: "5m",
+    expiresIn: "50m",
   });
 
   response.status(200).json({
@@ -71,13 +71,15 @@ const login = asyncHandler(async (request, response) => {
   });
 });
 
-const currentUser = asyncHandler(async (request, response) => {
+// user profile controller
+const userProfile = asyncHandler(async (request, response) => {
   const user = await User.findById(request.user._id).select("-password");
 
   response.status(200).json(user);
 });
 
-const currentAdmin = asyncHandler(async (request, response) => {
+// admini profile controller
+const adminProfile = asyncHandler(async (request, response) => {
   const admin = await User.findById(request.user._id).select("-password");
 
   response.status(200).json(admin);
@@ -86,6 +88,6 @@ const currentAdmin = asyncHandler(async (request, response) => {
 module.exports = {
   register,
   login,
-  currentUser,
-  currentAdmin,
+  userProfile,
+  adminProfile,
 };
